@@ -1,0 +1,204 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>收入统计</title>-->
+<!--    &lt;!&ndash; 引入ECharts &ndash;&gt;-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; 为ECharts准备一个具备大小（宽高）的 DOM &ndash;&gt;-->
+<!--<div id="chart" style="width: 600px; height: 400px;"></div>-->
+<!--<script>-->
+<!--    // 初始化ECharts实例-->
+<!--    var myChart = echarts.init(document.getElementById('chart'));-->
+
+<!--    // 初始数据-->
+<!--    var initialData = [-->
+<!--        { month: '2024-6', income: 9650 },-->
+<!--        { month: '2024-7', income: 0 }-->
+<!--    ];-->
+
+<!--    // 定义option配置-->
+<!--    var option = {-->
+<!--        title: {-->
+<!--            text: '收入统计'-->
+<!--        },-->
+<!--        xAxis: {-->
+<!--            type: 'category',-->
+<!--            data: initialData.map(item => item.month)-->
+<!--        },-->
+<!--        yAxis: {-->
+<!--            type: 'value',-->
+<!--            max: 10000 // 纵坐标最大值为10000-->
+<!--        },-->
+<!--        series: [{-->
+<!--            type: 'bar',-->
+<!--            data: initialData.map(item => item.income)-->
+<!--        }]-->
+<!--    };-->
+
+<!--    // 设置option并渲染图表-->
+<!--    myChart.setOption(option);-->
+
+<!--    // 模拟数据更新-->
+<!--    function updateData() {-->
+<!--        // 在实际应用中，从后端获取最新数据-->
+<!--        var newData = [-->
+<!--            { month: '2024-6', income: 9650 },-->
+<!--            { month: '2024-7', income: getRandomInt(10000) }-->
+<!--            // 可以根据实际情况添加更多月份的收入数据-->
+<!--        ];-->
+
+<!--        // 更新图表数据-->
+<!--        myChart.setOption({-->
+<!--            xAxis: {-->
+<!--                data: newData.map(item => item.month)-->
+<!--            },-->
+<!--            series: [{-->
+<!--                data: newData.map(item => item.income)-->
+<!--            }]-->
+<!--        });-->
+<!--    }-->
+
+<!--    // 模拟每隔一段时间更新数据-->
+<!--    setInterval(function () {-->
+<!--        updateData();-->
+<!--    }, 5000); // 每5秒更新一次-->
+
+<!--    // 辅助函数：生成随机整数（模拟收入数据变化）-->
+<!--    function getRandomInt(max) {-->
+<!--        return Math.floor(Math.random() * Math.floor(max));-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html style="height: 100%">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--        <title>收入统计</title>-->
+<!--</head>-->
+<!--<body style="height: 100%; margin: 0">-->
+<!--<div id="container" style="height: 100%"></div>-->
+
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.3/echarts.min.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--    // 基于准备好的dom，初始化echarts实例-->
+<!--    var myChart = echarts.init(document.getElementById('container'));-->
+
+<!--    // 准备初始数据-->
+<!--    var months = ['2024-6', '2024-7'];-->
+<!--    var initialData = [9650, 0]; // 2024-6 的数据固定为 9650，2024-7 的数据初始为 0-->
+
+<!--    // 指定图表的配置项和数据-->
+<!--    var option = {-->
+<!--        title: {-->
+<!--            text: '收入统计'-->
+<!--        },-->
+<!--        tooltip: {},-->
+<!--        legend: {-->
+<!--            data:['收入']-->
+<!--        },-->
+<!--        xAxis: {-->
+<!--            data: months,-->
+<!--            axisLabel: {-->
+<!--                rotate: 45-->
+<!--            }-->
+<!--        },-->
+<!--        yAxis: {-->
+<!--            max: 10000-->
+<!--        },-->
+<!--        series: [{-->
+<!--            name: '收入',-->
+<!--            type: 'bar',-->
+<!--            data: initialData-->
+<!--        }]-->
+<!--    };-->
+
+<!--    // 使用刚指定的配置项和数据显示图表。-->
+<!--    myChart.setOption(option);-->
+
+<!--    // 实时更新数据-->
+<!--    setInterval(function () {-->
+<!--        -->
+
+<!--        // 更新数据-->
+<!--        initialData[1] += Math.random() * Math.floor(max); // 增加第二个月的数据-->
+
+<!--        // 更新图表-->
+<!--        myChart.setOption({-->
+<!--            series: [{-->
+<!--                data: initialData-->
+<!--            }]-->
+<!--        });-->
+<!--    }, 2000); // 每2秒更新一次-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>收入统计</title>
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="width: 600px;height: 400px;"></div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('container'));
+
+    // 准备初始数据
+    var months = ['2024-6', '2024-7', '2024-8', '2024-9'];
+    var initialData = [9650, 10098, 9984, 0]; // 2024-6 的数据固定为 9650，2024-7 的数据固定为 10098, 2024-8 的数据固定为 9984, 2024-9 的数据固定为 9984
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '收入统计'
+        },
+        tooltip: {},
+        legend: {
+            data:['收入']
+        },
+        xAxis: {
+            data: months,
+            axisLabel: {
+                rotate: 45
+            }
+        },
+        yAxis: {
+            max: 12000
+        },
+        series: [{
+            name: '收入',
+            type: 'bar',
+            data: initialData
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    // 实时更新数据
+    setInterval(function () {
+        // 生成一个不会导致超过最大值的随机增加金额
+        var increaseAmount = Math.floor(Math.random() * (12000 - initialData[3])); // 确保增加后不会超过10000
+        if (increaseAmount === 0) increaseAmount = 1; // 确保至少增加1
+
+        // 更新数据
+        initialData[3] += increaseAmount; // 增加第二个月的数据
+
+        // 更新图表
+        myChart.setOption({
+            series: [{
+                data: initialData
+            }]
+        });
+    }, 2000); // 每2秒更新一次
+</script>
+</body>
+</html>
+

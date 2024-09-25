@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>今天你吃了吗外卖员工数量统计</title>
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js"></script>
+</head>
+<body>
+<!-- 准备一个具有指定宽高的 DOM 用于 ECharts 图表 -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '员工数量统计'
+        },
+        tooltip: {},
+        xAxis: {
+            data: ['禁用', '启用'] // 横坐标为员工状态
+        },
+        yAxis: {
+            type: 'value',
+            max: 5 // 纵坐标最大值设为5
+        },
+        series: [{
+            data: [2, 3], // 假设禁用有2人，启用有3人
+            type: 'bar'
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    // 假设有一个函数来更新员工数量（这里只是模拟）
+    function updateEmployeeCount(newCounts) {
+        myChart.setOption({
+            xAxis: {
+                data: ['禁用', '启用'] // 保持横坐标不变
+            },
+            series: [{
+                data: newCounts // 更新数据
+            }]
+        });
+    }
+
+    // 模拟数据更新（实际应用中应根据后端返回的数据或前端状态管理来更新）
+    setTimeout(function () {
+        updateEmployeeCount([3, 4]); // 假设禁用变为3人，启用变为4人
+    }, 2000);
+</script>
+</body>
+</html>
